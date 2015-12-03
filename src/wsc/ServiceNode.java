@@ -1,6 +1,7 @@
 package wsc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class ServiceNode extends GPNode {
 		}
 
 		WSCData rd = ((WSCData) (input));
-		rd.qos = service.qos;
+		rd.qos = Arrays.copyOf(service.qos, service.qos.length);
 		rd.inputs.addAll(service.inputs);
 		rd.outputs.addAll(service.outputs);
 		rd.totalInputs = service.inputs.size();

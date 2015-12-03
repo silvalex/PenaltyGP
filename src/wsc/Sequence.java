@@ -1,5 +1,7 @@
 package wsc;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 import ec.EvolutionState;
@@ -15,25 +17,25 @@ public class Sequence extends GPNode {
 	public void eval(final EvolutionState state, final int thread, final GPData input, final ADFStack stack, final GPIndividual individual, final Problem problem) {
 		WSCInitializer init = (WSCInitializer) state.initializer;
 		double[] qos;
-		Set<String> inputs;
-		Set<String> outputs;
-		int totalInputs;
-		int satisfiedInputs;
+		Set<String> inputs = new HashSet<String>();
+		Set<String> outputs = new HashSet<String>();
+		int totalInputs = 0;
+		int satisfiedInputs = 0;
 
 		WSCData rd = ((WSCData) (input));
 
 		children[0].eval(state, thread, input, stack, individual, problem);
-		qos = rd.qos;
-		inputs = rd.inputs;
-		outputs = rd.outputs;
-		totalInputs = rd.totalInputs;
-		satisfiedInputs = rd.satisfiedInputs;
+		qos = Arrays.copyOf(rd.qos, rd.qos.length);
+		inputs.addAll(rd.inputs);
+		outputs.addAll(rd.outputs);
+		totalInputs += rd.totalInputs;
+		satisfiedInputs += rd.satisfiedInputs;
 
 		children[1].eval(state, thread, input, stack, individual, problem);
 		rd.qos[WSCInitializer.TIME] += qos[WSCInitializer.TIME];
 		rd.qos[WSCInitializer.COST] += qos[WSCInitializer.COST];
-		rd.qos[WSCInitializer.AVAILABILITY] *= rd.qos[WSCInitializer.AVAILABILITY];
-		rd.qos[WSCInitializer.RELIABILITY] *= rd.qos[WSCInitializer.RELIABILITY];
+		rd.qos[WSCInitializer.AVAILABILITY] *= qos[WSCInitializer.AVAILABILITY];
+		rd.qos[WSCInitializer.RELIABILITY] *= qos[WSCInitializer.RELIABILITY];
 
 		rd.totalInputs += rd.totalInputs; // Add the inputs of the right-hand side
 		rd.totalInputs += totalInputs;
