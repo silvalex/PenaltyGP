@@ -13,6 +13,8 @@ import ec.gp.GPNode;
 
 public class Sequence extends GPNode {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void eval(final EvolutionState state, final int thread, final GPData input, final ADFStack stack, final GPIndividual individual, final Problem problem) {
 		WSCInitializer init = (WSCInitializer) state.initializer;

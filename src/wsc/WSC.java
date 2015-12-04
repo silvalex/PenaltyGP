@@ -1,17 +1,16 @@
 package wsc;
 
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import ec.util.*;
 import ec.*;
 import ec.gp.*;
-import ec.gp.koza.*;
 import ec.simple.*;
 
 public class WSC extends GPProblem implements
 		SimpleProblemForm {
+
+	private static final long serialVersionUID = 1L;
 
 	public void setup(final EvolutionState state, final Parameter base) {
 		// very important, remember this

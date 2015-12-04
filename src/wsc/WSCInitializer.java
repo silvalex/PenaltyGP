@@ -28,6 +28,7 @@ import ec.util.MersenneTwisterFast;
 import ec.util.Parameter;
 
 public class WSCInitializer extends GPInitializer {
+	private static final long serialVersionUID = 1L;
 	// Constants with of order of QoS attributes
 	public static final int TIME = 0;
 	public static final int COST = 1;

@@ -1,23 +1,16 @@
 package wsc;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import ec.EvolutionState;
 import ec.Problem;
-import ec.app.tutorial4.MultiValuedRegression;
 import ec.gp.ADFStack;
 import ec.gp.GPData;
 import ec.gp.GPIndividual;
 import ec.gp.GPNode;
 import ec.util.MersenneTwisterFast;
-import wsc.TaxonomyNode;
 
 public class ServiceNode extends GPNode {
+	private static final long serialVersionUID = 1L;
 	private Service service;
 
 	public void eval(final EvolutionState state, final int thread, final GPData input, final ADFStack stack, final GPIndividual individual, final Problem problem) {

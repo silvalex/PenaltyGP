@@ -3,11 +3,10 @@ package wsc;
 import java.util.HashSet;
 import java.util.Set;
 
-import ec.util.*;
-import ec.*;
 import ec.gp.*;
 
 public class WSCData extends GPData {
+	private static final long serialVersionUID = 1L;
 	public double[] qos;
 	public Set<String> inputs = new HashSet<String>();
 	public Set<String> outputs = new HashSet<String>();
